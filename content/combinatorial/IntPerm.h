@@ -4,6 +4,8 @@
  * License: CC0
  * Description: Permutation -> integer conversion. (Not order preserving.)
  * Integer -> permutation can use a lookup table.
+ * Time: O(n)
+ * Hola toy saludando 
  */
 #pragma once
 
