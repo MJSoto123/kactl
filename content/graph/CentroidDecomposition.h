@@ -11,11 +11,11 @@
  const int LOG = 18;
  struct CentroidDecomposition{
      vvi tree, cd; 
-     vi sz, par, ans, dep; 
+     vi subt, par, ans, dep; 
      vector<bool> removed; 
      vvi up; 
      int root; 
-     CentroidDecomposition(int n) : tree(n), cd(n), root(-1), sz(n), par(n), ans(n, INF), dep(n), removed(n) {
+     CentroidDecomposition(int n) : tree(n), cd(n), root(-1), subt(n), par(n), ans(n, INF), dep(n), removed(n) {
          up.assign(LOG, vi(n, -1));
      }
  
@@ -25,18 +25,18 @@
      }
  
      int dfs(int u, int p = -1) {
-         sz[u] = 1; 
+         subt[u] = 1; 
          for(int v : tree[u]) {
              if(removed[v] || v == p) continue;  
-             sz[u] += dfs(v, u);
+             subt[u] += dfs(v, u);
          }
-         return sz[u]; 
+         return subt[u]; 
      }
  
      int find_centroid(int u, int comp_sz, int p = -1) {
          for(int v : tree[u]) {
              if(removed[v] || v == p) continue;
-             if(2 * sz[v] > comp_sz) return find_centroid(v, comp_sz, u);
+             if(2 * subt[v] > comp_sz) return find_centroid(v, comp_sz, u);
          }
          return u; 
      }
