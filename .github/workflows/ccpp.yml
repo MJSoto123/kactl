@@ -24,3 +24,8 @@ jobs:
       run: make test-compiles
     - name: Run stress tests
       run: make test
+    - name: Upload kactl.pdf
+      uses: actions/upload-artifact@v3
+      with:
+        name: kactl-pdf
+        path: kactl.pdf
