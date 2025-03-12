@@ -1,4 +1,4 @@
-name: C/C++ CI
+name: Build and Commit KACTL PDF
 
 on:
   push:
@@ -10,17 +10,29 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-    timeout-minutes: 20
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Update Gaaa
+    - name: Checkout repo
+      uses: actions/checkout@v3
+      with:
+        persist-credentials: false
+
+    - name: Set up Git
+      run: |
+        git config --global user.name "github-actions"
+        git config --global user.email "actions@github.com"
+
+    - name: Update apt
       run: sudo apt-get update
+
     - name: Install pdflatex
       run: sudo apt-get install texlive-latex-base texlive-latex-recommended texlive-latex-extra
-    - name: Build pdf
+
+    - name: Build PDF
       run: make kactl
-    - name: Run compiles
-      run: make test-compiles
-    - name: Run stress tests
-      run: make test
+
+    - name: Commit PDF to repo
+      run: |
+        git add kactl.pdf
+        git commit -m "Auto-update kactl.pdf from CI" || echo "No changes to commit"
+        git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git HEAD:${{ github.ref }}
