@@ -1,23 +1,38 @@
 /**
- * Author: User adamant on CodeForces
- * Source: http://codeforces.com/blog/entry/12143
- * Description: For each position in a string, computes p[0][i] = half length of
- *  longest even palindrome around pos i, p[1][i] = longest odd (half rounded down).
+ * Author: Julio
+ * Source: CP algo 
+ * Description: For each position in a string, computes half length of
+ *  longest even palindrome around pos i
  * Time: O(N)
- * Status: Stress-tested
+ * Status: tested
  */
 #pragma once
 
-array<vi, 2> manacher(const string& s) {
-	int n = sz(s);
-	array<vi,2> p = {vi(n+1), vi(n)};
-	rep(z,0,2) for (int i=0,l=0,r=0; i < n; i++) {
-		int t = r-i+!z;
-		if (i<r) p[z][i] = min(t, p[z][l+t]);
-		int L = i-p[z][i], R = i+p[z][i]-!z;
-		while (L>=1 && R+1<n && s[L-1] == s[R+1])
-			p[z][i]++, L--, R++;
-		if (R>r) l=L, r=R;
-	}
-	return p;
+vi manacher_odd(string s) {
+    int n = s.size();
+    s = "@" + s + "$";
+    vi len(n + 1);
+    int l = 1, r = 1;
+    for(int i = 1; i <= n; i++) {
+        len[i] = min(r - i, len[l + (r - i)]);
+        while(s[i - len[i]] == s[i + len[i]]) len[i]++;
+        if(i + len[i] > r) {
+            l = i - len[i];
+            r = i + len[i];
+        }
+    }
+    len.erase(begin(len));
+    return len;
+}
+
+// para verificar si un substring es palindromo
+// return pal[l + r] >= (r - l + 1) + 1; indexando en 0
+vi manacher(string s) {
+    string ns(1, '#'); 
+    for(char c : s) {
+        ns.push_back(c);
+        ns.push_back('#');
+    }
+    auto res = manacher_odd(ns);
+    return vi(res.begin() + 1, res.end() - 1);
 }
