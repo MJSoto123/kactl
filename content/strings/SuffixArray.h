@@ -38,4 +38,15 @@ struct SuffixArray {
 			for (k && k--, j = sa[x[i] - 1];
 					s[i + k] == s[j + k]; k++);
 	}
+
+	//Longest Common Substring: construir el suffixArray s = s1 + "#" + s2 + "$" y m = sz(s2)
+    // pair<int, int> lcs() {
+    //     int mx = -1, ind = -1;
+    //     for (int i = 1; i < n; i++) {
+    //         if (((sa[i] < n-m-1) != (sa[i-1] < n-m-1)) && mx < lcp[i]) {
+    //             mx = lcp[i]; ind = i;
+    //         }
+    //     }
+    //     return {mx, ind};
+    // }
 };
