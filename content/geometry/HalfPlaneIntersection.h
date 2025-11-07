@@ -11,39 +11,59 @@
 
 #pragma once
 #include "Point.h"
-
-struct line { P p, q; }
-bool HPintersect(vector<line> v) { 
-    auto side = [](line &l, P p) {
-        return sideOf(l.p, l.q, p) >= 0;  
-    };
-
-    auto crosspoint = [](const line &l, const line &m, P &x) { 
-        auto inter = lineInter(l.p, l.q, m.p, m.q); 
-        if(inter.first <= 0) return false; 
-        x = inter.second; 
-        return true; 
-    };
-
-    shuffle(all(v), mt19937(time(0))); 
-    P cen(0,1e9); 
-    rep(i,0,sz(v)) { 
-        line &S = v[i]; 
-        if(side(S, cen)) continue; 
-        P d = (S.q - S.p).unit(); 
-        P A = S.p - d * 1e8, B = S.p + d * 1e8; 
-        rep(j,0,i) { 
-            P x; 
-            line &T = v[j]; 
-            if(crosspoint(T, S, x)) { 
-                int cnt = 0; 
-                if(!side(T, A)) A = x, cnt++; 
-                if(!side(T, B)) B = x, cnt++;
-                if(cnt == 2) return false; 
-            }else if(!side(T, A)) return false; 
-        }
-        if(B.y > A.y) swap(A, B); 
-        cen = A; 
+struct HP {
+    P a, b;  
+    HP() {}
+    HP(P a, P b) : a(a), b(b) {}
+    HP(const HP& rhs) : a(rhs.a), b(rhs.b) {}
+    int operator < (const HP& rhs) const {
+        P p = b - a;
+        P q = rhs.b - rhs.a;
+        int fp = (p.y < 0 || (fabsl(p.y) < eps && p.x < 0));
+        int fq = (q.y < 0 || (fabsl(q.y) < eps && q.x < 0));
+        if (fp != fq) return fp == 0;
+        if (p.cross(q)) return p.cross(q) > 0;
+        return p.cross(rhs.b - a) < 0;
     }
-    return true; 
-} 
+    P line_line_intersection(P a, P b, P c, P d) {
+        b = b - a; d = c - d; c = c - a;
+        return a + b * c.cross(d) / b.cross(d);
+    }
+    P intersection(const HP &v) {
+        return line_line_intersection(a, b, v.a, v.b);
+    }
+};
+
+int check(HP a, HP b, HP c) {
+    return (a.b - a.a).cross(b.intersection(c) - a.a) > -eps; 
+}
+
+vector<P> half_plane_intersection(vector<HP> h) {
+    sort(all(h));
+    vector<HP> tmp;
+    rep(i,0,sz(h)) { 
+        if(!i || (h[i].b - h[i].a).cross(h[i - 1].b - h[i - 1].a)) {
+            tmp.push_back(h[i]);
+        }
+    }
+
+    h = tmp;
+    vector<HP> q(sz(h) + 10);
+    int qh = 0, qe = 0;
+    rep(i,0,sz(h)) { 
+        while (qe - qh > 1 && !check(h[i], q[qe - 2], q[qe - 1])) qe--;
+        while (qe - qh > 1 && !check(h[i], q[qh], q[qh + 1])) qh++;
+        q[qe++] = h[i];
+    }
+    
+    while (qe - qh > 2 && !check(q[qh], q[qe - 2], q[qe - 1])) qe--;
+    while (qe - qh > 2 && !check(q[qe - 1], q[qh], q[qh + 1])) qh++;
+
+    vector<HP> res; rep(i,qh,qe) res.push_back(q[i]);
+    vector<P> hull;
+    if (sz(res) > 2) {
+        rep(i,0,sz(res)) 
+            hull.push_back(res[i].intersection(res[(i + 1) % ((int)res.size())]));
+    }
+    return hull;
+}
