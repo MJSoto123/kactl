@@ -9,7 +9,7 @@
 	\kactlimport{PushRelabel.h}
 	\kactlimport{MinCostMaxFlow.h}
 	\kactlimport{EdmondsKarp.h}
-	% \kactlimport{Dinic.h}
+	\kactlimport{Dinic.h}
 	\kactlimport{MinCut.h}
 	\kactlimport{GlobalMinCut.h}
 	\kactlimport{GomoryHu.h}
@@ -59,3 +59,14 @@
 		% Test: stress-tests/graph/erdos-gallai.cpp
 		A simple graph with node degrees $d_1 \ge \dots \ge d_n$ exists iff $d_1 + \dots + d_n$ is even and for every $k = 1\dots n$,
 		\[ \sum _{i=1}^{k}d_{i}\leq k(k-1)+\sum _{i=k+1}^{n}\min(d_{i},k). \]
+
+	\subsection{V\'ertices que pertenecen a todos los maximum matching bipartitos}
+		Crea un grafo auxiliar. Dirige las aristas no emparejadas de $L \rightarrow R$ y las emparejadas de $R \rightarrow L$.  
+		Calcula $Z_L$, v\'ertices que alcanzables desde v\'ertices libres en L. 
+		De forma an\'aloga calcula $Z_R$, el conjunto buscado es $(L - Z_L) \cup (R - Z_R)$.
+
+	\subsection{L-R Flow}
+		Flow with demands. Nuevos v\'ertices $S'$ y $T'$. Reemplaza las aristas $(u,v,l,r)$ por tres aristas: $(u,v,r-l)$, $(S',v,l)$ y $(u,T',l)$. 
+		Una arista m\'as $(T,S,\infty)$. 
+		Corre un primer maxflow de $S'$ a $T'$, si es menor a la suma de todos los $l$, el flujo buscado no existe. 
+		Corre un segundo maxflow de $S$ a $T$, este es el flujo m\'aximo buscado originalmente.  
