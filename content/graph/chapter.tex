@@ -27,6 +27,7 @@
 	\kactlimport{CentroidDecomposition.h}
 	\kactlimport{2sat.h}
 	\kactlimport{EulerWalk.h}
+	\kactlimport{VirtualTree.h}
 
 \section{Coloring}
 	\kactlimport{EdgeColoring.h}
@@ -70,3 +71,6 @@
 		Una arista m\'as $(T,S,\infty)$. 
 		Corre un primer maxflow de $S'$ a $T'$, si es menor a la suma de todos los $l$, el flujo buscado no existe. 
 		Corre un segundo maxflow de $S$ a $T$, este es el flujo m\'aximo buscado originalmente.  
+	\subsection{Cow Game}
+		Resuelve un problema de maximizaci\'on. Si se tienen desigualdades $d_v \leq d_u + c$, puedes construir un grafo con aristas $u \rightarrow v$ con peso $c$. 
+		Maximiza $a_t - a_s$ usando BellmanFord. Si no existe soluci\'on, existe un ciclo negativo o $s$ no alcanza a $t$.  
