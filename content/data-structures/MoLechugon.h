@@ -52,7 +52,6 @@ int main(){
         --l ; --r;
         QS.emplace_back(l,r,i);
     }
-
     sort(all(QS));
     int left = 0;
     int right = -1;
@@ -63,7 +62,4 @@ int main(){
         while(right > r) remove(right--);
         res[id] = ans;
     }
-    for(int i =0 ; i < q; i++) cout << res[i] << '\n';
-
 }
- 
