@@ -3,8 +3,7 @@
  * Date: 2025-11-07
  * License: Unknown
  * Source: coderats
- * Description: Finds the smallest x such that $a power x = b (mod)$. Prints -1 if no solution.
- *   Handles non-coprime $(gcd(a, mod) != 1)$ by stripping common factors.
+ * Description: Extended Baby Step Giant Step and Handles non-coprime.
  * Time: $O(\sqrt{\text{mod}})$ per query
  * Status: tested
  */
