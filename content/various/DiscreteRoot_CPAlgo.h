@@ -4,10 +4,6 @@
  * License: Unknown
  * Source: coderats
  * Description: Finds all integers $x$ such that $x^k \equiv a \pmod n$ for prime $n$.
- *   Uses:
- *     - Primitive root finder `generator(p)` for modulo $p$.
- *     - Baby-step Giant-step discrete logarithm to solve $g^{k t} \equiv a$.
- *   Prints the count and all valid $x$ values in increasing order.
  * Time: $O(\sqrt{n} \log n)$
  * Status: tested
  */
