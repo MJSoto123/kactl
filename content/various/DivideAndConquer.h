@@ -3,7 +3,7 @@
  * Date: 2025-11-07
  * License: Unknown
  * Source: coderats 
- * Description: $dp[k][i] = min(dp[k-1][j-1], cost(j, i))$
+ * Description: x
  * Time: $O(N)$ 
  * Status: tested  
  */

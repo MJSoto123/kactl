@@ -3,7 +3,7 @@
  * Date: 2025-11-07
  * License: Unknown
  * Source: coderats
- * Description: Finds all integers $x$ such that $x^k \equiv a \pmod n$ for prime $n$.
+ * Description: x
  * Time: $O(\sqrt{n} \log n)$
  * Status: tested
  */

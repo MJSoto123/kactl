@@ -3,7 +3,7 @@
  * Date: 2025-11-07
  * License: Unknown
  * Source: coderats 
- * Description: Knuth's DP
+ * Description: Knuth DP
  * Time: $O(N*N)$ 
  * Status: tested  
  */
