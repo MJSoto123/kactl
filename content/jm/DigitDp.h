@@ -16,7 +16,7 @@ void init(){
     memset(best, -1, sizeof(best));
     memset(choose, -1, sizeof(choose));
 }
-
+// xd
 ll dfs(int pos, int positive = 0, int smaller = 0, int bigger = 0){
     if(pos < 0){ return 1; }
     auto &memo = best[pos][positive][smaller][bigger];
