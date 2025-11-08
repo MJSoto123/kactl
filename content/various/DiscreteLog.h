@@ -8,7 +8,8 @@
  * Status: tested
  */
 
- // Returns minimal x >= 0 with a^x ≡ b (mod mod), or -1 if none.
+
+// Returns minimal x >= 0 with a ^ x  b (mod mod), or -1 if none.
 ll discrete_log(int a, int b){
     a %= mod; b %= mod;
 
