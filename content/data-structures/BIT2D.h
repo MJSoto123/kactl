@@ -3,7 +3,7 @@
  * Date: 2025-11-06
  * License: Unknown
  * Source: coderats 
- * Description: (x1,y1)(x2,y2) querys in O(Q log^2 N).
+ * Description: $(x1,y1)(x2,y2)$ querys in $O(Q log^2 N)$.
  * Time: $O(Q \log^2 N)$ 
  * Status: tested  
  */
