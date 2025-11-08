@@ -7,8 +7,8 @@
  * Time: $O(\sqrt{\text{mod}})$ 
  * Status: tested  
  */
- 
-// Returns minimal x >= 0 with a ^ x  b (mod mod), or -1 if none.
+
+ // Returns minimal $x >= 0$ with $a ^ x  b (mod mod)$, or -1 if none.
 ll discrete_log(int a, int b){
     a %= mod; b %= mod;
 
@@ -31,16 +31,16 @@ ll discrete_log(int a, int b){
     // Now gcd(a, mod) == 1 -> standard BSGS
     int n = sqrt(mod) + 1;
 
-    // Baby steps: store b * a^j
+    // Baby steps: store $b * a^j$
     vii baby; baby.reserve(n);
     int cur = b;
     rep(j, 0, n){
         baby.emplace_back(cur, j);
         cur = mul(cur, a);
     }
-    sort(all(baby)); // sort by first (value)
+    sort(all(baby));
 
-    // Giant steps: multiply remain * (a^n)^i and binary search
+    // Giant steps: multiply $remain * (a^n)^i$ and binary search
     int step = binpow(a, n);
     int giant = remain;
     rep(i, 1, n + 1){

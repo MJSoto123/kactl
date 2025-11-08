@@ -35,7 +35,7 @@ int generator(int p) {
     return -1;
 }
 
-// This program finds all numbers x such that x^k = a (mod n)
+// This program finds all numbers x such that $x^k = a (mod n)$
 int solve() {
     int n, k, a;
     scanf("%d %d %d", &n, &k, &a);
