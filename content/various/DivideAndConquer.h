@@ -3,7 +3,7 @@
  * Date: 2025-11-07
  * License: Unknown
  * Source: coderats 
- * Description: x
+ * Description: DyC
  * Time: $O(N)$ 
  * Status: tested  
  */
