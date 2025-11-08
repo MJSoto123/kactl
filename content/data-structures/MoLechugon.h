@@ -3,8 +3,8 @@
  * Date: 2025-11-06
  * License: Unknown
  * Source: coderats 
- * Description: Ans querys offline in N * SQRT(N).
- * Time: $O(N \sqrt N)$ 
+ * Description: Ans querys offline in N * SQRT(Q).
+ * Time: $O(N \sqrt Q)$ 
  * Status: tested  
  */
 
