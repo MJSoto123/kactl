@@ -1,10 +1,10 @@
 /**
  * Author: coderats 
- * Date: 2025-11-07
+ * Date: 2025-11-06
  * License: Unknown
  * Source: coderats 
- * Description: DigitDP and save the path
- * Time: $O(N)$ 
+ * Description: DigitDP
+ * Time: $O(dim)$ 
  * Status: tested  
  */
 

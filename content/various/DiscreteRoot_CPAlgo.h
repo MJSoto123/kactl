@@ -3,7 +3,7 @@
  * Date: 2025-11-07
  * License: Unknown
  * Source: coderats
- * Description: x
+ * Description: DiscreteRoot
  * Time: $O(\sqrt{n} \log n)$
  * Status: tested
  */

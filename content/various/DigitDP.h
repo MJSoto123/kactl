@@ -1,13 +1,13 @@
 /**
  * Author: coderats 
- * Date: 2025-11-07
+ * Date: 2025-11-06
  * License: Unknown
  * Source: coderats 
- * Description: DigitDP and save the path
- * Time: $O(N)$ 
+ * Description: DigitDP
+ * Time: $O(dim)$ 
  * Status: tested  
  */
-
+ 
 int low[20], high[20];
 ll best[20][2][2][2];
 int choose[20][2][2][2];

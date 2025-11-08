@@ -1,11 +1,11 @@
 /**
- * Author: coderats
- * Date: 2025-11-07
+ * Author: coderats 
+ * Date: 2025-11-06
  * License: Unknown
- * Source: coderats
- * Description: Extended Baby Step Giant Step and Handles non-coprime.
- * Time: $O(\sqrt{\text{mod}})$ per query
- * Status: tested
+ * Source: coderats 
+ * Description: DiscreteLog
+ * Time: $O(\sqrt{\text{mod}})$ 
+ * Status: tested  
  */
 
  // Returns minimal x >= 0 with a ^ x  b (mod mod), or -1 if none.
