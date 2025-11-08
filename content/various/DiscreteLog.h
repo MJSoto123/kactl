@@ -3,8 +3,7 @@
  * Date: 2025-11-07
  * License: Unknown
  * Source: coderats
- * Description: Discrete Log (Extended BSGS) in your macro style.
- *   Finds the smallest $x >= 0$ such that $a^x ≡ b (mod mod)$. Prints -1 if no solution.
+ * Description: Finds the smallest x such that $a power x = b (mod)$. Prints -1 if no solution.
  *   Handles non-coprime $(gcd(a, mod) != 1)$ by stripping common factors.
  * Time: $O(\sqrt{\text{mod}})$ per query
  * Status: tested
