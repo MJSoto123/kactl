@@ -8,7 +8,7 @@
  * Status: tested
  */
  
-// Finds the primitive root modulo p
+// Finds the primitive root modulo p ptsmre xddx sda
 int generator(int p) {
     vector<int> fact;
     int phi = p-1, n = phi;
