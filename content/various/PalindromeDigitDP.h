@@ -1,4 +1,3 @@
-
 /**
  * Author: Juanma
  * Description: Counts palindromic integers in [0, X] using Digit DP.
