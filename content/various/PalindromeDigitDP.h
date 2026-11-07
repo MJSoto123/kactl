@@ -6,7 +6,6 @@
  * are reused only when the current number is smaller than X.
  * Usage: solve(R) - solve(L - 1)
  * Time: O(D^2 * 10), where D is the number of digits.
- * Space: O(D^2)
  */
 
 const int max_num_digits = 20;
